@@ -1,17 +1,12 @@
-// Imprimir todos los temas
-$(document).ready(function() {
+$(document).ready(() => {
+  // Funcionalidad para imprimir todos los temas
   let output = '';
-  let request = new XMLHttpRequest();
 
-  request.open('GET', 'http://examen-laboratoria-sprint-5.herokuapp.com/topics');
-
-  request.onreadystatechange = function() {
-    if (this.readyState === 4) {
-      console.log('Status:', this.status);
-      console.log('Headers:', this.getAllResponseHeaders());
-
-      const data = JSON.parse(this.responseText);
-
+  $.ajax({
+    url: 'http://examen-laboratoria-sprint-5.herokuapp.com/topics',
+    method: 'GET',
+    dataType: 'json',
+    success: (data) => {
       $.each(data, function(index) {
         const element = data[index];
         
@@ -28,40 +23,43 @@ $(document).ready(function() {
 
         $('#posts').html(output);
       });
-    };
-  };
-
-  request.send();
-
-  $('.add-theme-js').on('click', function() {
-    var authorName = $('.author-name-js').val();
-    var contentTheme = $('.content-theme-js').val();
-    var body = {
-      'author_name': authorName,
-      'content': contentTheme,
-    };
-    
-    $.ajax({
-      url: 'http://examen-laboratoria-sprint-5.herokuapp.com/topics',
-      method: 'POST',
-      contentType: 'application/json',
-      dataType: 'json',
-      data: JSON.stringify({
-        'author_name': authorName,
-        'content': contentTheme,
-      }),
-      success: function(data) {
-         
-      },
-      fail: handleError,
-    });
-  
-    function handleError(request) {
-      if (request) {
-        alert(request.message);
-      }
-    }
+    },
+    fail: handleError,
   });
 
- 
+  let handleError = (request) => {
+    if (request) {
+      alert(request.message);
+    }
+  };
+});
+
+$('.add-theme-js').on('click', function() {
+  var authorName = $('.author-name-js').val();
+  var contentTheme = $('.content-theme-js').val();
+  var body = {
+    'author_name': authorName,
+    'content': contentTheme,
+  };
+  
+  $.ajax({
+    url: 'http://examen-laboratoria-sprint-5.herokuapp.com/topics',
+    method: 'POST',
+    contentType: 'application/json',
+    dataType: 'json',
+    data: JSON.stringify({
+      'author_name': authorName,
+      'content': contentTheme,
+    }),
+    success: function(data) {
+        
+    },
+    fail: handleError,
+  });
+
+  function handleError(request) {
+    if (request) {
+      alert(request.message);
+    }
+  }
 });
