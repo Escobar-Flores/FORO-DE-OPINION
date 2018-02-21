@@ -55,7 +55,7 @@ El proyecto presenta los siguientes archivos para uso del usuario:
 
 * Crear un tema propio:
 
-![Crear-tema](public/assets/docs/Crear-tema.png "Crear-tema")
+![Crear-tema](public/assets/docs/crear-tema.png "Crear-tema")
 
 * Buscador de temas:
 
