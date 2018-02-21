@@ -1,9 +1,9 @@
-$(document).ready(() => {
-  // Funcionalidad para imprimir todos los temas
+// Funcionalidad para imprimir todos los temas
+$(document).ready(() => {  
   let output = '';
 
   $.ajax({
-    url: 'http://examen-laboratoria-sprint-5.herokuapp.com/topics',
+    url: 'https://examen-laboratoria-sprint-5.herokuapp.com/topics',
     method: 'GET',
     dataType: 'json',
     success: (data) => {
@@ -26,24 +26,20 @@ $(document).ready(() => {
     },
     fail: handleError,
   });
-
-  let handleError = (request) => {
-    if (request) {
-      alert(request.message);
-    }
-  };
+  handleError();
 });
 
-$('.add-theme-js').on('click', function() {
-  var authorName = $('.author-name-js').val();
-  var contentTheme = $('.content-theme-js').val();
-  var body = {
+// Funcionalidad para crear temas
+$('.add-theme-js').on('click', () => {
+  let authorName = $('.author-name-js').val();
+  let contentTheme = $('.content-theme-js').val();
+  let body = {
     'author_name': authorName,
     'content': contentTheme,
   };
   
   $.ajax({
-    url: 'http://examen-laboratoria-sprint-5.herokuapp.com/topics',
+    url: 'https://examen-laboratoria-sprint-5.herokuapp.com/topics',
     method: 'POST',
     contentType: 'application/json',
     dataType: 'json',
@@ -51,15 +47,52 @@ $('.add-theme-js').on('click', function() {
       'author_name': authorName,
       'content': contentTheme,
     }),
-    success: function(data) {
-        
+    success: (data) => {        
     },
     fail: handleError,
   });
-
-  function handleError(request) {
-    if (request) {
-      alert(request.message);
-    }
-  }
+  handleError();
 });
+
+// Funcionalidad para filtrar por título
+$('#btnSearch').on('click', (event) => {
+  event.preventDefault();
+  let search = $('#search').val();
+  $('#posts').empty();
+  let output = '';
+
+  $.ajax({ 
+    url: 'https://examen-laboratoria-sprint-5.herokuapp.com/topics',
+    method: 'GET',
+    dataType: 'json',
+    success: (results) => { 
+      let data = results.filter((response) => {
+        return response.content.toLowerCase().indexOf(search) >= 0;
+      });
+
+      $.each(data, function(index) {
+        const element = data[index];
+        
+        output += `
+        <div class="card my-2">
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <h4>Por: ${element.author_name}</h4>
+              <p>${element.content}</p>
+              <footer class="blockquote-footer">Respuestas: ${element.responses_count}</footer>
+            </blockquote>
+          </div>
+        </div>`;
+
+        $('#posts').html(output);
+      });
+    }		
+  });
+  handleError();
+});
+
+let handleError = (request) => {
+  if (request) {
+    alert(request.message);
+  }
+};

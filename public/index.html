@@ -2,52 +2,50 @@
 
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Foro de Opinión</title>
+    <link href="https://fonts.googleapis.com/css?family=Montez" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet">
+    <!--Bootstrap -->
+    <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap-grid.min.css">
+    <!-- Styles of CSS-->
+    <link rel="stylesheet" href="css/main.css">
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>Foro de Opinión</title>
-  <link href="https://fonts.googleapis.com/css?family=Montez" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet">
-  <!--Bootstrap -->
-  <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap-grid.min.css">
-  <!-- Styles of CSS-->
-  <link rel="stylesheet" href="css/main.css">
-</head>
-
-<body class="bg-light">
-  <nav class="navbar navbar-light bg-dark justify-content-between">
-    <a class="navbar-brand text-white logo-text-font">Foro de opinión</a>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </nav>
-  <section class="my-3 container">
-    <h2 class="text-center">Comenta y participa en los foros o crea tu propio tema y recibe comentarios</h2>
-    <br>
-    <div class="row">
-      <div class="col-12 d-flex justify-content-center">
-        <button  type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Crear Tema</button>
+  <body class="bg-light">
+    <nav class="navbar navbar-light bg-dark justify-content-between">
+      <a class="navbar-brand text-white logo-text-font">Foro de opinión</a>
+      <form class="form-inline">
+        <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button id="btnSearch" class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+      </form>
+    </nav>
+    <section class="my-3 container">
+      <h2 class="text-center">Comenta y participa en los foros o crea tu propio tema y recibe comentarios</h2>
+      <br>
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          <button  type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Crear Tema</button>
+        </div>
       </div>
-    </div>
-  </section>
-  <!--Aquí van los temas -->
-  <section id="posts" class="container">
-  </section>
-
-  <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Agregar nuevo tema</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <form>
+    </section>
+    <!--Aquí van los temas -->
+    <section id="posts" class="container">
+    </section>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Agregar nuevo tema</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
               <div class="form-group">
                 <label for="exampleFormControlInput1">Por:</label>
                 <input type="text" class="form-control author-name-js"  placeholder="Nombre">
@@ -57,22 +55,19 @@
                 <textarea class="form-control content-theme-js" rows="3"></textarea>
               </div>
             </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success add-theme-js" data-dismiss="modal">Agregar Tema</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success add-theme-js" data-dismiss="modal">Agregar Tema</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-  <!-- jQuery -->
-  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <!-- Bootstrap -->
-  <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
-  <script src="js/functions.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/index.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
 
-</body>
-
+  </body>
 </html>
