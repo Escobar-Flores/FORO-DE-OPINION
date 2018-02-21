@@ -32,4 +32,36 @@ $(document).ready(function() {
   };
 
   request.send();
+
+  $('.add-theme-js').on('click', function() {
+    var authorName = $('.author-name-js').val();
+    var contentTheme = $('.content-theme-js').val();
+    var body = {
+      'author_name': authorName,
+      'content': contentTheme,
+    };
+    
+    $.ajax({
+      url: 'http://examen-laboratoria-sprint-5.herokuapp.com/topics',
+      method: 'POST',
+      contentType: 'application/json',
+      dataType: 'json',
+      data: JSON.stringify({
+        'author_name': authorName,
+        'content': contentTheme,
+      }),
+      success: function(data) {
+         
+      },
+      fail: handleError,
+    });
+  
+    function handleError(request) {
+      if (request) {
+        alert(request.message);
+      }
+    }
+  });
+
+ 
 });
