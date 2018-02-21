@@ -23,17 +23,18 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </nav>
-  <br>
-  <h2 class="text-center">Comenta y participa en los foros o crea tu propio tema y recibe comentarios</h2>
-  <br>
-  <div class="row">
-    <div class="col-12 d-flex justify-content-center">
-      <button  type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Crear Tema</button>
+  <section class="my-3 container">
+    <h2 class="text-center">Comenta y participa en los foros o crea tu propio tema y recibe comentarios</h2>
+    <br>
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <button  type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Crear Tema</button>
+      </div>
     </div>
-  </div>
-   
+  </section>
   <!--Aquí van los temas -->
-  <section id="posts"></section>
+  <section id="posts" class="container">
+  </section>
 
   <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -70,6 +71,7 @@
   <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
   <script src="js/functions.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/index.js"></script>
 
 </body>
 
