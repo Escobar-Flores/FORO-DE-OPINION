@@ -66,8 +66,8 @@ $('#btnSearch').on('click', (event) => {
     method: 'GET',
     dataType: 'json',
     success: (results) => { 
-      let data = results.filter((response) => {
-        return response.content.toLowerCase().indexOf(search) >= 0;
+      let data = results.filter((response) => {       
+        return response.content.toLowerCase().indexOf(search) !== -1;
       });
 
       $.each(data, function(index) {
@@ -89,6 +89,7 @@ $('#btnSearch').on('click', (event) => {
     }		
   });
   handleError();
+  $('#search').val('');
 });
 
 let handleError = (request) => {

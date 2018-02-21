@@ -59,7 +59,7 @@ $('#btnSearch').on('click', function (event) {
     dataType: 'json',
     success: function success(results) {
       var data = results.filter(function (response) {
-        return response.content.toLowerCase().indexOf(search) >= 0;
+        return response.content.toLowerCase().indexOf(search) !== -1;
       });
 
       $.each(data, function (index) {
@@ -72,6 +72,7 @@ $('#btnSearch').on('click', function (event) {
     }
   });
   handleError();
+  $('#search').val('');
 });
 
 var handleError = function handleError(request) {
